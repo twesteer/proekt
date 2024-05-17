@@ -1,6 +1,7 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.Windows;
-using System;
+using System.Windows.Controls; // Не забудьте про это пространство имен
 
 namespace проект
 {
@@ -8,6 +9,7 @@ namespace проект
     {
         public User currentUser;
         public MyDbContext context;
+
         public DeleteGame(User user)
         {
             InitializeComponent();
@@ -46,7 +48,7 @@ namespace проект
             }
         }
 
-        public bool DeleteSelectedGameFromDataGrid(GamesDataGrid dataGrid)
+        public bool DeleteSelectedGameFromDataGrid(DataGrid dataGrid) // Изменение типа параметра
         {
             // Проверка, выбран ли элемент
             if (dataGrid.SelectedItem == null)
@@ -72,10 +74,7 @@ namespace проект
             return deleteResult;
         }
 
-
-
-
-        public void GamesDataGrid_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        public void GamesDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (GamesDataGrid.SelectedItem != null)
             {
