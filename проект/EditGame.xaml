@@ -1,0 +1,96 @@
+﻿<Window x:Class="проект.EditGame"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="EditGame" Height="682" Width="800" WindowStartupLocation="CenterScreen" MinWidth="800" MinHeight="450">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="Background" Value="#007ACC"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontFamily" Value="Bahnschrift"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="5">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="TextBlock">
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontFamily" Value="Bahnschrift"/>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                <GradientStop Offset="0" Color="#007ACC"/>
+                <GradientStop Offset="1" Color="#004F80"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid Margin="20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+
+            </Grid.RowDefinitions>
+            <TextBlock Text="Выберите Игру:" FontWeight="Bold" VerticalAlignment="Top" Grid.Row="0" />
+            <DataGrid x:Name="GameDataGrid" AutoGenerateColumns="False" Grid.Column="1" Grid.Row="0" Width="250" Height="150" CanUserAddRows="False" SelectionMode="Single" SelectionChanged="GameDataGrid_SelectionChanged">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Название" Binding="{Binding Name}" />
+                    <DataGridTextColumn Header="Год выпуска" Binding="{Binding YearOfRelease}" />
+                    <DataGridTextColumn Header="Жанр" Binding="{Binding Genre}" />
+                    <DataGridTextColumn Header="Цена" Binding="{Binding Price}" />
+                </DataGrid.Columns>
+            </DataGrid>
+            <TextBlock Text="Новое название:" FontWeight="Bold" VerticalAlignment="Center"  Grid.Column="0" Grid.Row="1"/>
+            <TextBox x:Name="NewNameTextBox" Grid.Column="1" Grid.Row="1" Width="250"/>
+            <TextBlock Text="Новый год выпуска:" FontWeight="Bold" VerticalAlignment="Center" Grid.Row="2" />
+            <TextBox x:Name="NewReleaseYearTextBox" HorizontalAlignment="Center" VerticalAlignment="Center"  Grid.Column="1" Grid.Row="2" Width="250" Height="29" />
+            <TextBlock Text="Новый жанр:" FontWeight="Bold" VerticalAlignment="Center" Grid.Row="3" />
+            <TextBox x:Name="NewGenreTextBox" HorizontalAlignment="Center" VerticalAlignment="Center"  Grid.Column="1" Grid.Row="3" Width="250" Height="29" />
+            <TextBlock Text="Новые возрастные ограничения:" FontWeight="Bold" VerticalAlignment="Center" Grid.Row="4" />
+            <ComboBox x:Name="NewAgeRestrictionsComboBox" HorizontalAlignment="Center" VerticalAlignment="Center"  Grid.Column="1" Grid.Row="4" Width="250" Height="29" >
+                <ComboBoxItem>0+</ComboBoxItem>
+                <ComboBoxItem>6+</ComboBoxItem>
+                <ComboBoxItem>12+</ComboBoxItem>
+                <ComboBoxItem>16+</ComboBoxItem>
+                <ComboBoxItem>18+</ComboBoxItem>
+            </ComboBox>
+            <TextBlock Text="Новая цена:" FontWeight="Bold" VerticalAlignment="Center" Grid.Row="5" />
+            <TextBox x:Name="NewPriceTextBox" HorizontalAlignment="Center" VerticalAlignment="Center"  Grid.Column="1" Grid.Row="5" Width="250" Height="29" />
+            <TextBlock Text="Текущее фото:" FontWeight="Bold" VerticalAlignment="Center" Grid.Row="6" />
+            <Image x:Name="CurrentPhotoImage" Grid.Column="1" Grid.Row="6" Width="200" Height="200" Stretch="Uniform"/>
+
+            <Button x:Name="NewPhotoButton" Width="150" Height="30" Click="NewPhotoButton_Click" Grid.ColumnSpan="2" Grid.Row="7" Content="Новое фото"/>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="8" Grid.ColumnSpan="2" Margin="0,10,0,0">
+                <Button x:Name="EditGameButton" Width="150" Height="30" Click="EditGameButton_Click" Content="Изменить игру"/>
+                <Button x:Name="CancelButton" Width="150" Height="30" Click="CancelButton_Click" Content="Отмена"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

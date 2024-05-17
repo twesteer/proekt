@@ -1,0 +1,63 @@
+﻿<Window x:Class="проект.LoginForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+        mc:Ignorable="d"
+        Title="LoginForm" Height="450" Width="800" WindowStartupLocation="CenterScreen" MinWidth="800" MinHeight="450">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="Background" Value="#007ACC"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontFamily" Value="Bahnschrift"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="5">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style TargetType="TextBlock">
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontFamily" Value="Bahnschrift"/>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                <GradientStop Offset="0" Color="#007ACC"/>
+                <GradientStop Offset="1" Color="#004F80"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <TextBlock Text="Войти в систему" HorizontalAlignment="Center" Margin="0 25 0 0"/>
+        <Grid Margin="80">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" MinWidth="140" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <TextBlock Text="Логин:" FontWeight="Bold" VerticalAlignment="Center" Height="29" />
+            <TextBox x:Name="EmailTextBox"  Grid.Column="1" Grid.Row="0" Margin="120,0,145,0"/>
+            <TextBlock Text="Пароль:" FontWeight="Bold" VerticalAlignment="Center" Grid.Row="1" Height="29" />
+            <PasswordBox x:Name="PasswordTextBox"  Grid.Column="1" Grid.Row="1" Margin="120,0,145,0"/>
+            <Button Name="ShowPassword"  Content ="Показать пароль" Click="ShowPassword_Click" VerticalAlignment="Center" Grid.Column="1" Grid.Row="1" Margin="365,0,10,0" Height="19"/>
+            <TextBox Name="passwordText" TextChanged="OtherTextBox_TextChanged" Visibility="Collapsed" Grid.Column="1" Grid.Row="1" Margin="120,0,145,0" />
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Grid.Row="2"  Grid.Column="1" Margin="0 5 0 0" Width="340">
+                <Button x:Name="LoginButton" Width="150" Height="25" Click="LoginButton_Click" Content="Войти"/>
+                <Button x:Name="GoBackButton" Width="150" Height="25" Click="GoBackButton_Click" Content="Вернуться"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>
